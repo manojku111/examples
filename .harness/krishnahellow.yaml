@@ -13,7 +13,7 @@ pipeline:
         spec:
           deploymentType: Kubernetes
           service:
-            serviceRef: sample_service_1679382512134
+            serviceRef: githubexample
           environment:
             environmentRef: dev_1679382491158
             deployToAll: false
