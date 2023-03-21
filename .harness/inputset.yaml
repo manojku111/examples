@@ -1,0 +1,22 @@
+inputSet:
+  name: input-set
+  identifier: inputset
+  orgIdentifier: default
+  projectIdentifier: Test
+  pipeline:
+    identifier: githubrepository
+    stages:
+      - stage:
+          identifier: Deploytok8s
+          type: Deployment
+          spec:
+            environmentGroup:
+              environments:
+                - environmentRef: K8smaster1
+                  deployToAll: false
+                  infrastructureDefinitions:
+                    - identifier: k8smaster1
+                - environmentRef: k8smaster2
+                  deployToAll: false
+                  infrastructureDefinitions:
+                    - identifier: k8smaster2
