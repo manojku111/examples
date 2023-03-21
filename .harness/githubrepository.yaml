@@ -15,10 +15,10 @@ pipeline:
           service:
             serviceRef: Githubk8sservice
           environment:
-            environmentRef: K8smaster1
+            environmentRef: k8smaster2
             deployToAll: false
             infrastructureDefinitions:
-              - identifier: k8smaster1
+              - identifier: k8smaster2
           execution:
             steps:
               - step:
