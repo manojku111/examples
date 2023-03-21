@@ -14,11 +14,6 @@ pipeline:
           deploymentType: Kubernetes
           service:
             serviceRef: Githubk8sservice
-          environment:
-            environmentRef: k8smaster2
-            deployToAll: false
-            infrastructureDefinitions:
-              - identifier: k8smaster2
           execution:
             steps:
               - step:
@@ -37,6 +32,12 @@ pipeline:
                   timeout: 10m
                   spec:
                     pruningEnabled: false
+          environmentGroup:
+            envGroupRef: master1andmaster2
+            metadata:
+              parallel: true
+            deployToAll: true
+            environments: <+input>
         tags: {}
         failureStrategies:
           - onFailure:
