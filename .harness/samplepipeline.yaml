@@ -34,17 +34,21 @@ pipeline:
                   identifier: fetchLinkedApps
                   timeout: 10m
                   spec: {}
+              - step:
+                  type: GitOpsFetchLinkedApps
+                  name: GitOpsFetchLinkedApps_2
+                  identifier: GitOpsFetchLinkedApps_2
+                  spec: {}
+                  timeout: 10m
             rollbackSteps: []
           service:
             serviceRef: k8sservice
-          environments:
+          environmentGroup:
+            envGroupRef: cluster1andcluster2
             metadata:
               parallel: true
-            values:
-              - environmentRef: cluster1
-                deployToAll: true
-              - environmentRef: prod
-                deployToAll: true
+            deployToAll: true
+            environments: <+input>
         tags: {}
         failureStrategies:
           - onFailure:
